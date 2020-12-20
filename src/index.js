@@ -16,10 +16,13 @@ const colors = [
 const interval = {
     intervalId: null,
     isActive: false,
+    enabled: startBtn.setAttribute('dataset', 'enabled'),
+
     start() {
         if (this.isActive) {
             return;
         };
+        this.enabled = startBtn.setAttribute('dataset', 'disabled');
         this.isActive = true;
         this.intervalId = setInterval(() => {
             body.style.backgroundColor = `${colors[randomIntegerFromInterval(0, colors.length-1)]}`;
@@ -29,6 +32,8 @@ const interval = {
         clearInterval(this.intervalId);
         this.intervalId = null;
         this.isActive = false;
+        this.enabled;
+
     },
 };
 const randomIntegerFromInterval = (min, max) => {
